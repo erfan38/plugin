@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Run vscode-test",
+            "runtimeExecutable": "vscode-test",
+            "cwd": "${workspaceFolder}/smart-contract-vulnerability-detection",
+            "args": []
+        },
+        {
+            "type": "extensionHost",
+            "request": "launch",
+            "name": "Run Extension",
+            "runtimeExecutable": "${execPath}",
+            "args": [
+                "--extensionDevelopmentPath=${workspaceFolder}"
+            ],
+            "outFiles": [
+                "${workspaceFolder}/out/**/*.js"
+            ],
+            "preLaunchTask": "npm: compile"
+        }
+    ]
+}

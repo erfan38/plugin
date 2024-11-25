@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "npm",
+			"script": "vscode:prepublish",
+			"path": "smart-contract-vulnerability-detection",
+			"problemMatcher": [],
+			"label": "npm: vscode:prepublish - smart-contract-vulnerability-detection",
+			"detail": "npm run compile"
+		},
+		{
+			"type": "npm",
+			"script": "compile",
+			"path": "smart-contract-vulnerability-detection",
+			"problemMatcher": [],
+			"label": "npm: compile",
+			"detail": "Compiles TypeScript files."
+		}
+	]
+}
