@@ -4,6 +4,10 @@
 
 This Visual Studio Code extension helps developers detect vulnerabilities in **Solidity smart contracts**. Solidity is a high-level programming language primarily used for writing smart contracts on the Ethereum blockchain. By streamlining the identification of potential security risks, this extension enhances the safety and security of smart contract development.
 
+This plugin was developed as part of the research published in *Blockchain: Research and Applications* (Elsevier, 2026).
+
+> **Paper:** *Fine-Tuned Large Language Model and Comprehensive Dataset for Securing Ethereum Smart Contracts with Real-Time VSCode Auditing.* Blockchain: Research and Applications, Elsevier, March 2026. [DOI](https://doi.org/10.1016/j.bcra.2026.100466)
+
 ---
 
 ## 📊 **Features**
@@ -157,7 +161,18 @@ This extension is released under the [MIT License](LICENSE).
 ---
 ## 📚 **Cite**
 
-Coming soon!
+
+If you use this work, please cite:
+
+```
+Erfan, F. et al. Fine-Tuned Large Language Model and Comprehensive Dataset
+for Securing Ethereum Smart Contracts with Real-Time VSCode Auditing.
+Blockchain: Research and Applications, Elsevier, 2026.
+
+Erfan, F. et al. Advanced smart contract vulnerability detection using large language models.
+Cyber Security in Networking Conference (CSNet) (pp. 289-296). IEEE, 2024.
+```
+
 
 ## 📚 **For More Information**
 
