@@ -1,66 +1,169 @@
-# Smart Contract Vulnerability Detection — VSCode Plugin
+# 🔧 **Smart Contract Vulnerability Detection Extension**
 
-A Visual Studio Code extension that performs **real-time vulnerability auditing of Ethereum smart contracts** using a fine-tuned Large Language Model. Developed as part of the research published in *Blockchain: Research and Applications* (Elsevier, 2026).
+## 📄 **Project Overview**
 
-> **Paper:** *Fine-Tuned Large Language Model and Comprehensive Dataset for Securing Ethereum Smart Contracts with Real-Time VSCode Auditing.* Blockchain: Research and Applications, Elsevier, March 2026. [DOI](https://doi.org/10.1016/j.bcra.2026.100466)
+This Visual Studio Code extension helps developers detect vulnerabilities in **Solidity smart contracts**. Solidity is a high-level programming language primarily used for writing smart contracts on the Ethereum blockchain. By streamlining the identification of potential security risks, this extension enhances the safety and security of smart contract development.
 
 ---
 
-## Overview
+## 📊 **Features**
 
-Traditional smart contract analyzers rely on rule-based static analysis or symbolic execution, which often miss context-dependent vulnerabilities and produce high false-positive rates. This extension integrates a fine-tuned LLM directly into the developer workflow, surfacing vulnerabilities at authoring time.
+### 1. **Automatic Vulnerability Detection**
 
-## Features
+Detects common vulnerabilities in Solidity smart contracts, including:
 
-- **Real-time auditing** of Solidity files inside VSCode
-- **Detection coverage** for common high-impact vulnerability classes, including:
-  - Reentrancy
-  - Timestamp dependency
-  - Integer overflow/underflow
-- **Fine-tuned LLM backend** trained on a curated smart contract vulnerability dataset (released alongside the paper)
-- **Explanation output** — the plugin returns the vulnerability type, location, and a short natural-language rationale, not just a binary flag
-- **Production-oriented evaluation pipeline** for benchmarking model performance against rule-based and traditional ML baselines
+- **🛡️ Reentrancy Attacks**: 
+  - Occurs when a contract calls an external contract and allows it to re-enter before the initial execution is complete, leading to potential fund loss.
+  - *Example*: A malicious contract repeatedly withdraws funds before the balance is updated.
 
-## Dataset
+- **📈 Integer Overflows/Underflows**: 
+  - Happens when arithmetic operations exceed the maximum or minimum integer value, causing wrap-around errors.
+  - *Example*: Adding `1` to the maximum value of a `uint256` resets it to `0`.
 
-A comprehensive Solidity vulnerability dataset was built to support fine-tuning and evaluation. Details on composition, labeling, and splits are documented in the paper.
+- **🕒 Timestamp Dependence**: 
+  - Arises when contract logic relies on block timestamps, which miners can manipulate.
+  - *Example*: Using `block.timestamp` to determine critical outcomes.
 
-## Requirements
+### 2. **Inline Warnings and Fix Suggestions**
 
-- Visual Studio Code
-- Node.js
-- Python (for the inference backend)
-- Access to the fine-tuned model weights (see paper/repository releases)
+Highlights vulnerable code directly in the editor and provides actionable mitigation suggestions.
 
-## Installation
+### 3. **Detailed Reports**
 
-Clone the repository and follow the setup instructions in `INSTALL.md` (or the paper's supplementary materials) to configure the model backend and load the extension into VSCode.
+Generates comprehensive vulnerability reports in the VSCode terminal or output window, including:
 
-## Evaluation
+- **File and Line Number**: Where the vulnerability is located.
+- **Vulnerability Type**: Type of issue detected.
+- **Severity Level**: Risk classification (High, Medium, Low).
+- **Description**: Explanation of the vulnerability.
+- **Suggested Fix**: Recommendations for mitigation.
 
-The approach was evaluated against rule-based tools and traditional ML baselines on real-world Solidity contracts. See the paper for full precision/recall results and ablation studies.
+### 4. **Customizable Rulesets**
 
-## Related Work
+Configure which vulnerabilities to detect and tailor the analysis to your project's needs.
 
-This plugin is part of a broader research program on AI-driven security for blockchain systems, including:
+---
 
-- Sybil attack defense via decentralized federated learning — *Internet of Things*, Elsevier, 2026
-- Advanced smart contract vulnerability detection with LLMs — *IEEE CSNet*, 2024
+## 🛠️ **Installation**
 
-## Citation
+### **Via Visual Studio Code Marketplace**
 
-If you use this work, please cite:
+- Search for `smart-contract-vulnerability-detection` in the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`).
 
-```
-Erfan, F. et al. Fine-Tuned Large Language Model and Comprehensive Dataset
-for Securing Ethereum Smart Contracts with Real-Time VSCode Auditing.
-Blockchain: Research and Applications, Elsevier, 2026.
+### **Manual Installation**
 
-Erfan, F. et al. Advanced smart contract vulnerability detection using large language models.
-Cyber Security in Networking Conference (CSNet) (pp. 289-296). IEEE, 2024.
-```
+1. Download the `.vsix` file from the [Releases Page](https://github.com/erfan38/plugin/releases).
+2. In VSCode, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and run:
+   ```
+   Extensions: Install from VSIX
+   ```
 
-## Contact
+---
 
-Fatemeh Erfan — fatemeh.erfan@polymtl.ca
-Postdoctoral Fellow, Polytechnique Montréal
+## 🗓 **Extension Settings**
+
+This extension contributes the following settings:
+
+- **Enable/Disable the Extension**:
+  ```json
+  "scvd.enable": true
+  ```
+
+- **Custom Ruleset Path**:
+  ```json
+  "scvd.customRules": "path/to/custom-rules.json"
+  ```
+
+- **API Key for Detection Services**:
+  ```json
+  "scvd.apiKey": "your-api-key-here"
+  ```
+
+---
+
+## 🔧 **Usage**
+
+1. **Analyze a Smart Contract**:
+   - Open a Solidity file (`.sol`).
+   - Run the command:
+     ```
+     SCVD: Analyze Current File
+     ```
+
+2. **Enter API Key**:
+   - Add your API key in the settings under `scvd.apiKey`.
+
+3. **Choose which vulnerability you want to check**
+  - You can choose between three common vulnerabilities or you can select all of them.
+  
+4. **View Results**:
+   - Results will appear in the **Output** or **Problems** panel.
+
+---
+
+## 🛢️ **Known Issues**
+
+- **False Positives**: Some vulnerability detections may result in false positives.
+
+Please report issues or feature requests on the [GitHub Issues Page](https://github.com/erfan38/plugin/issues).
+
+---
+
+## 📜 **Release Notes**
+
+### **1.0.0**
+
+- Initial release with core features:
+  - Automatic detection of common vulnerabilities (e.g., reentrancy, overflows, timestamp dependence).
+  - Inline warnings and fix suggestions.
+  - Detailed reports.
+
+### Future release: **1.1.0**
+
+- Improved performance for large Solidity files.
+
+
+## 👨‍💻 **Contributing**
+
+We welcome contributions! To contribute:
+
+1. **Fork the Repository**.
+2. **Create a New Branch**:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. **Make Your Changes**.
+4. **Submit a Pull Request**.
+
+---
+
+## 📖 **Extension Guidelines**
+
+Follow these best practices:
+
+- **💡 Efficient Performance**: Optimize code for speed and efficiency.
+- **📉 Clear Error Messages**: Provide helpful error messages.
+- **🔄 UI Consistency**: Align with VSCode's design principles.
+- **📚 Code Quality**: Write clean, maintainable, and documented code.
+
+Refer to the [VSCode Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines) for more details.
+
+---
+
+## 📚 **License**
+
+This extension is released under the [MIT License](LICENSE).
+
+---
+## 📚 **Cite**
+
+Coming soon!
+
+## 📚 **For More Information**
+
+- [Visual Studio Code's Extension API](https://code.visualstudio.com/api)
+- [Smart Contract Security Best Practices](https://consensys.github.io/smart-contract-best-practices/)
+
+**Happy Coding Securely!** 🚀🌟
+
+---
