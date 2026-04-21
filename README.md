@@ -1,0 +1,169 @@
+# 🔧 **Smart Contract Vulnerability Detection Extension**
+
+## 📄 **Project Overview**
+
+This Visual Studio Code extension helps developers detect vulnerabilities in **Solidity smart contracts**. Solidity is a high-level programming language primarily used for writing smart contracts on the Ethereum blockchain. By streamlining the identification of potential security risks, this extension enhances the safety and security of smart contract development.
+
+---
+
+## 📊 **Features**
+
+### 1. **Automatic Vulnerability Detection**
+
+Detects common vulnerabilities in Solidity smart contracts, including:
+
+- **🛡️ Reentrancy Attacks**: 
+  - Occurs when a contract calls an external contract and allows it to re-enter before the initial execution is complete, leading to potential fund loss.
+  - *Example*: A malicious contract repeatedly withdraws funds before the balance is updated.
+
+- **📈 Integer Overflows/Underflows**: 
+  - Happens when arithmetic operations exceed the maximum or minimum integer value, causing wrap-around errors.
+  - *Example*: Adding `1` to the maximum value of a `uint256` resets it to `0`.
+
+- **🕒 Timestamp Dependence**: 
+  - Arises when contract logic relies on block timestamps, which miners can manipulate.
+  - *Example*: Using `block.timestamp` to determine critical outcomes.
+
+### 2. **Inline Warnings and Fix Suggestions**
+
+Highlights vulnerable code directly in the editor and provides actionable mitigation suggestions.
+
+### 3. **Detailed Reports**
+
+Generates comprehensive vulnerability reports in the VSCode terminal or output window, including:
+
+- **File and Line Number**: Where the vulnerability is located.
+- **Vulnerability Type**: Type of issue detected.
+- **Severity Level**: Risk classification (High, Medium, Low).
+- **Description**: Explanation of the vulnerability.
+- **Suggested Fix**: Recommendations for mitigation.
+
+### 4. **Customizable Rulesets**
+
+Configure which vulnerabilities to detect and tailor the analysis to your project's needs.
+
+---
+
+## 🛠️ **Installation**
+
+### **Via Visual Studio Code Marketplace**
+
+- Search for `smart-contract-vulnerability-detection` in the Extensions view (`Ctrl+Shift+X` or `Cmd+Shift+X`).
+
+### **Manual Installation**
+
+1. Download the `.vsix` file from the [Releases Page](https://github.com/erfan38/plugin/releases).
+2. In VSCode, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and run:
+   ```
+   Extensions: Install from VSIX
+   ```
+
+---
+
+## 🗓 **Extension Settings**
+
+This extension contributes the following settings:
+
+- **Enable/Disable the Extension**:
+  ```json
+  "scvd.enable": true
+  ```
+
+- **Custom Ruleset Path**:
+  ```json
+  "scvd.customRules": "path/to/custom-rules.json"
+  ```
+
+- **API Key for Detection Services**:
+  ```json
+  "scvd.apiKey": "your-api-key-here"
+  ```
+
+---
+
+## 🔧 **Usage**
+
+1. **Analyze a Smart Contract**:
+   - Open a Solidity file (`.sol`).
+   - Run the command:
+     ```
+     SCVD: Analyze Current File
+     ```
+
+2. **Enter API Key**:
+   - Add your API key in the settings under `scvd.apiKey`.
+
+3. **Choose which vulnerability you want to check**
+  - You can choose between three common vulnerabilities or you can select all of them.
+  
+4. **View Results**:
+   - Results will appear in the **Output** or **Problems** panel.
+
+---
+
+## 🛢️ **Known Issues**
+
+- **False Positives**: Some vulnerability detections may result in false positives.
+
+Please report issues or feature requests on the [GitHub Issues Page](https://github.com/erfan38/plugin/issues).
+
+---
+
+## 📜 **Release Notes**
+
+### **1.0.0**
+
+- Initial release with core features:
+  - Automatic detection of common vulnerabilities (e.g., reentrancy, overflows, timestamp dependence).
+  - Inline warnings and fix suggestions.
+  - Detailed reports.
+
+### Future release: **1.1.0**
+
+- Improved performance for large Solidity files.
+
+
+## 👨‍💻 **Contributing**
+
+We welcome contributions! To contribute:
+
+1. **Fork the Repository**.
+2. **Create a New Branch**:
+   ```bash
+   git checkout -b feature-branch
+   ```
+3. **Make Your Changes**.
+4. **Submit a Pull Request**.
+
+---
+
+## 📖 **Extension Guidelines**
+
+Follow these best practices:
+
+- **💡 Efficient Performance**: Optimize code for speed and efficiency.
+- **📉 Clear Error Messages**: Provide helpful error messages.
+- **🔄 UI Consistency**: Align with VSCode's design principles.
+- **📚 Code Quality**: Write clean, maintainable, and documented code.
+
+Refer to the [VSCode Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines) for more details.
+
+---
+
+## 📚 **License**
+
+This extension is released under the [MIT License](LICENSE).
+
+---
+## 📚 **Cite**
+
+Coming soon!
+
+## 📚 **For More Information**
+
+- [Visual Studio Code's Extension API](https://code.visualstudio.com/api)
+- [Smart Contract Security Best Practices](https://consensys.github.io/smart-contract-best-practices/)
+
+**Happy Coding Securely!** 🚀🌟
+
+---
